@@ -22,11 +22,81 @@
 
 ---
 
+Runtime: **3** **ms**
+
+```java
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] map = new int[20050];
+        int size = 4;
+        for (int i = 0; i < nums.length; i++) {
+            map[nums[i] + size] = (i + 1);
+            int diff = target - nums[i + 1] + size;
+            if (diff < 0) continue;
+            int d = map[diff];
+            if (d > 0)
+                return new int[]{d - 1, i + 1};
+        }
+        return null;
+    }
+}
+```
+
+
+
+Runtime: **4** **ms**
+
+```
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+
+        int numMin = Integer.MAX_VALUE;
+        int numMax = Integer.MIN_VALUE;
+
+        for (int num : nums) {
+            if (num < numMin) {
+                numMin = num;
+            }
+
+            if (num > numMax) {
+                numMax = num;
+            }
+        }
+
+        int max = target - numMin;
+        int min = target - numMax;
+
+        int targetMax = max > numMax ? numMax : max;
+        int targetMin = min < numMin ? numMin : min;
+
+        int[] numIndices = new int[targetMax - targetMin + 1];
+
+        for (int i = 0; i <= numIndices.length - 1; i++) {
+            numIndices[i] = -1;
+        }
+
+        for (int i = 0; i <= nums.length - 1; i++) {
+            if (nums[i] >= targetMin && nums[i] <= targetMax) {
+                int offset = -targetMin;
+                if (numIndices[(target - nums[i]) + offset] != -1) {
+                    return new int[]{numIndices[(target - nums[i]) + offset], i};
+                } else {
+                    numIndices[nums[i] + offset] = i;
+                }
+            }
+        }
+        return new int[]{0, 0};
+    }
+}
+```
+
+---
+
 ### 第三次
 
 更加简洁一些，把两个for循环合并成一个。
 
-Runtime: **10 ms**
+Runtime: **7 ms**
 
 ```java
 class Solution {
