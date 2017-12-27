@@ -24,7 +24,7 @@
 
 ### 第三次
 
- 更加简洁一些，把两个for循环合并成一个。
+更加简洁一些，把两个for循环合并成一个。
 
 Runtime: **10 ms**
 
@@ -34,10 +34,6 @@ class Solution {
         HashMap<Integer,Integer> map = new HashMap<>();
         int[] result = new int[2];
 
-        for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i],i);
-        }
-        
         for (int i = 0; i < nums.length; i++) {
             int t = target - nums[i];
             if (map.containsKey(t) && map.get(t) != i) {
@@ -68,7 +64,7 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             map.put(nums[i],i);
         }
-        
+
         for (int i = 0; i < nums.length; i++) {
             int t = target - nums[i];
             if (map.containsKey(t) && map.get(t) != i) {
