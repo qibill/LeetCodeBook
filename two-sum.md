@@ -42,11 +42,9 @@ class Solution {
 }
 ```
 
-
-
 Runtime: **4** **ms**
 
-```
+```java
 class Solution {
     public int[] twoSum(int[] nums, int target) {
 
