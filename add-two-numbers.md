@@ -80,16 +80,16 @@ class Solution {
         int sum = i1 + i2;
         return numberToListNode(sum);
     }
-    
+
     public static int listNodeToNumber(ListNode l1) {
         if (l1.next == null) {
             return l1.val;
         }
         return 10 * listNodeToNumber(l1.next) + l1.val;
     }
-    
+
     public static ListNode numberToListNode(int i) {
-        
+
         if (i / 10 < 1) {
             ListNode ln = new ListNode(i);
             return ln;
